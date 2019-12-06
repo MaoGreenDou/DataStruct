@@ -2,20 +2,71 @@
 //
 
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include "SqList.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	SqList sq;
+	int e = -1;
+
+	//Demo01.SqList初始化
+	initList(sq);
+	for (int i = 0;i < sq.listsize;i++)
+	{
+		sq.elem[i] = i;
+		sq.length++;
+	}
+	for (int i = 0;i < sq.length;i++)
+	{
+		printf("initial sq[%d]:%d\n", i + 1, sq.elem[i]);
+	}
+
+	//Demo02.Sqlist定位算法
+	printf("first index %d\n",locateElem(sq, 30, &compare));
+
+	//Demo03.SqList插入操作
+	listInsert(sq, sq.length, 100);
+	for (int i = 0;i < sq.length;i++)
+	{
+		printf("ListInsert sq[%d]:%d\n", i + 1, sq.elem[i]);
+	}
+
+	//Demo04.SqList删除操作
+	listDelete(sq, 1, e);
+	for (int i = 0;i < sq.length;i++)
+	{
+		printf("ListDelete sq[%d]:%d\n", i + 1, sq.elem[i]);
+	}
+	printf("%d has been delete", e);
 
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+/*
+ADT List{
+    D={}
+	R={}
+	P={
+	//初始化和销毁
+	Initlist
+	DestroyList
 
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+	//引用型操作
+	ListEmpty
+	ListLength
+	PriorElem
+	NextElem
+	GetElem
+	LocateElem
+	ListTraverse
+
+	//加工型操作
+	ClearList
+	PutElem
+	ListInsert
+	ListDelete
+	}
+
+}
+*/
