@@ -35,7 +35,7 @@ Status initList(SqList& L)
 	}
 	L.length = 0;
 	L.listsize = LIST_INIT_SIZE;
-	
+
 	return OK;
 }
 
@@ -63,32 +63,26 @@ Description:返回L中与e满足comapare关系的第一个元素下标
 Input:Sqlist L，ElemType e，Status （*compare）
 Return:int i 元素下表/ERROR未找到
 **********/
-int locateElem(SqList L, ElemType e, Status (*compare)(ElemType,ElemType))
+int locateElem(SqList L, ElemType e, Status(*compare)(ElemType, ElemType))
 {
-	ElemType* p = L.elem;    
-    int i = 1;
+	ElemType* p = L.elem;
+	int i = 1;
 
-	if (listEmpty(L))    //可以不判空
+	//可以不判空
+	while (i <= L.length && !(*compare)(*p++, e))
 	{
-		
-		while (i <= L.length && !(*compare)(*p++, e))
-		{
-			++i;
-		}
+		++i;
+	}
 
-		if (i <= L.length)
-		{
-			return i;
-		}
-		else
-		{
-			return ERROR;
-		}
+	if (i <= L.length)
+	{
+		return i;
 	}
 	else
 	{
 		return ERROR;
 	}
+
 }
 
 /**********
@@ -104,7 +98,7 @@ Return:Status OK 插入成功/ERRPR 插入失败
 **********/
 Status listInsert(SqList& L, int i, ElemType e)
 {
-	if (i >= 1 && i <= L.length + 1 )    //从第一个元素之前到最后一个元素之后可以插入,且表非满
+	if (i >= 1 && i <= L.length + 1)    //从第一个元素之前到最后一个元素之后可以插入,且表非满
 	{
 		if (L.length >= L.listsize)
 		{
@@ -117,7 +111,7 @@ Status listInsert(SqList& L, int i, ElemType e)
 			L.elem = newBase;
 			L.listsize += LISTINCREMENT;
 			//realloc 会自动赋值内存中的内容
-			
+
 			ElemType* insertPos = &(L.elem[i - 1]);
 			for (ElemType* p = &(L.elem[L.length - 1]);p >= insertPos;--p)
 			{
@@ -156,7 +150,7 @@ Return:Status OK 删除成功/ERROR 删除失败
 **********/
 Status listDelete(SqList& L, int i, ElemType& e)
 {
-	if (i<1 || i>L.length)    //可以不用判空
+	if (i<1 || i>L.length)   
 	{
 		return ERROR;
 	}
@@ -168,11 +162,11 @@ Status listDelete(SqList& L, int i, ElemType& e)
 		for (++p;p <= q;++p)
 		{
 			*(p - 1) = *p;
-			
+
 		}
 		--L.length;
 		return OK;
-		
+
 	}
 }
 
