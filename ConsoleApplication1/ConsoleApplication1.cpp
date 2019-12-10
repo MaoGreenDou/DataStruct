@@ -1,13 +1,23 @@
 ﻿// ConsoleApplication1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
+//项目总结
+/*
+1.分配内存有可能失败
+2.删除要判“空”
+3.删除要释放且要置NULL    （2 3）
+4.增加要判“满”
+5.增加要看是否溢出    （4 5 1）
+6.顺序结构访问（数组访问）看index是否合法
+7.解引用要非NULL
+*/
 
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 //#include "SqList.h"
 #include "LinkList.h"
-//void testSqList();
 
+//void testSqList();
 void testLinkList();
 
 int main()

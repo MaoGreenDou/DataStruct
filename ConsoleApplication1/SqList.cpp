@@ -172,7 +172,87 @@ Status listDelete(SqList& L, int i, ElemType& e)
 
 /*
 1.分配内存有可能失败
-2.删除要判空
-3.增加要判满
-4.删除要释放
+2.删除要判“空”
+3.删除要释放    （2 3）
+4.增加要判“满”
+5.增加要看是否溢出    （4 5 1）
+6.顺序结构访问（数组访问）看index是否合法
+*/
+
+
+
+/**********
+练习
+**********/
+
+/*
+Status initSqList(SqList& L )
+{
+    L.elem = (ElemType*)malloc(N*sizeof(ElemType));
+	//判断是否分配成功
+
+	L.size = N;
+	L.length = 0 ;
+}
+
+Status insertSqList(SqList& L,int i, Elemtype e)
+{
+    ElemType* temp = NULL;
+	ElemType* end = NULL;
+
+    if(i<1 || i>length+1)
+	{
+	    index is not avaluable!
+	}
+	else
+	{
+	    if(L.size == L.length)
+		{
+		    多分配内存，再插入
+		}
+		else
+		{
+		    temp = &(L.elem[i-1]);
+			end = &L.elem[L.length - 1];
+
+			for(end;end>=temp;end--)
+			{
+			    *(end+1) = *end;
+			}
+
+			L.elem[i-1] = a;
+			L.length ++;
+
+		}
+	}
+}
+
+Status delete(SqList& L,int i,ElemType& e)
+{
+    if(i<1 || i>L.length)
+	{
+	    i is not avaluable!
+	}
+	else
+	{
+	    if(L.length == 0 );//可以不用判空
+		ElemType* temp = NULL;
+		ElemType* end = NULL;
+
+		temp = L.elem[i-1];
+		end = L.elem[L.length - 1];
+		e = *temp;
+
+		for(temp;temp<end;temp++)
+		{
+		    *temp = *(temp+1);
+		}
+
+		free(temp);
+		temp = NULL; // 理论上应该有
+
+
+	}
+}
+
 */

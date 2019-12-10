@@ -109,7 +109,7 @@ void clearList(LinkList& L)
 	{
 		temp = L->next;
 		L->next = temp->next;
-		free(temp);
+		freeNode(temp);
 	}
 }
 
@@ -167,3 +167,92 @@ void createList(LinkList& L, int length)
 /**********
 1.访问值（输入值）要合法：e.g. getElem的i值不能小于1
 **********/
+
+
+
+
+//----------练手----------//
+
+/*
+createList(Linklist& L,int length)
+{
+    LinkList temp = NULL;
+    L =  (LinkList)malloc(sizeof(LNode));
+	if(!L)
+	{
+	    exit(-1);
+	}
+	L->next = null;
+
+	for(int i=length;i>0;--i)
+	{
+	    temp = (LinkList)malloc(sizeof(LNode));
+		if(!temp)
+		{
+		    exit(-1);
+		}
+		scanf("%d",&(temp->data));
+		temp->next = L->next;
+		L->next = temp;
+	}
+}
+
+listInsert(LinkList L,int i,ElemType e)
+{
+      LinkList p  = L;
+	  LinkList temp = NULL;
+	  int j = 0;
+
+	  while(p&&j<i-1)
+	  {
+	      p = p->next;
+		  j++;
+	  }
+
+	  temp = malloc;
+	  OVERFLOW;
+
+	  tmep->data = e;
+	  temp->next = p->next;
+	  p->next = temp;
+}
+
+listDelete(LinkList L,int i, ElemType& e)
+{
+    LinkList temp = NULL;
+    LinkList p = L;
+	int j = 0;
+
+	while(p&&j<i-1)
+	{
+	    p = p->next;
+		++j;
+	}
+
+	if(!p||j>i-1)
+	{
+	    if(!(p->next))
+		{
+		    return ERROR;
+		}
+		temp = p->next;
+		p->next = temp->next;
+		e = temp->data;
+		free(temp);
+		temp  = NULL; //可以不用
+
+	}
+}
+
+clearList(LinkList& L)
+{
+    LinkList temp = NULL;
+    while(L->next)
+	{
+	    temp = L->next;
+		L->next = temp->next;
+		free(temp);
+	}
+}
+
+*/

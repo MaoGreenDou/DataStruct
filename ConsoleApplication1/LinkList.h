@@ -10,6 +10,42 @@ typedef struct LNode
 	struct LNode* next;
 }LNode,*LinkList;
 
+/**********
+Function:makeNode();
+Description:给p所指地址，建立值为e的结点
+Input：LinkList& p，ElemType e
+Return：Status OK 成功/ERROR 失败
+**********/
+Status makeNode(LinkList& p, ElemType e)
+{
+	p = (LinkList)malloc(sizeof(LNode));
+	if (!p)
+	{
+		printf("OVERFLOW!\n");
+		return ERROR;
+	}
+	else
+	{
+		p->data = e;
+		p->next = NULL;
+		return OK;
+	}
+}
+
+Status freeNode(LinkList& p)
+{
+	if (!p)
+	{
+		printf("pointer is NULL!\n");
+		return ERROR;
+	}
+	else
+	{
+		free(p);
+		p = NULL;
+	}
+}
+
 /***********
 Function:createList()
 Description:建立一个长为length的空链表(逆序建立)
@@ -17,6 +53,7 @@ Input:LinkList& L,int length
 Return:void
 ***********/
 void createList(LinkList& L, int length);
+
 
 /***********
 Function:createList()
